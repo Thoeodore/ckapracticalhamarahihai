@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h> 
+void main()
+{
+float value[50];
+int maxvals,counter,i,low,high,group[12]={0}; 
+clrscr();
+printf("Enter no of items"); 
+scanf("%d",&maxvals); 
+printf("Enter no of groups"); 
+scanf("%d",&counter); 
+printf("Enter %d items",maxvals); 
+for(i=0;i<maxvals;i++)
+{
+scanf("%f",&value[i]);
+group[(int)(value[i]/10)]++;
+}
+printf("\n");
+printf("group range frequency \n"); 
+for(i=0;i<counter;i++)
+{
+low=i*10; 
+high=low+9;
+printf("%2d %4d to %d %3d \n",i+1,low,high,group[i]);
+}
+getch();
+}
