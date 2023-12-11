@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<conio.h> 
+#include<values.h> 
+#include<math.h> 
+#include<stdlib.h> 
+void main()
+{
+int i,j,n;
+float x[20],y,mu,var,sm,sv,sum,vsum; 
+clrscr();
+randomize();
+printf("Enter sample size mu and variance "); 
+scanf("%d%f%f",&n,&mu,&var); 
+printf("\nRandom sample\n"); 
+for(i=0;i<n;i++)
+{ 
+y=0;
+for(j=0;j<12;j++) 
+y=rand()/(float) MAXINT; 
+y=y-6; 
+x[i]=mu+y*sqrt(var); 
+printf("\t%f",x[i]);
+}
+printf("\nPopulation mean=%f and population variance=%f",mu,var); 
+sum=0.0,vsum=0.0;
+for(i=0;i<n;i++) 
+sum=sum+x[i]; 
+sm=sum/n; 
+for(i=0;i<n;i++)
+vsum=vsum+((x[i]-sm)*(x[i]-sm)); 
+sv=vsum/n;
+printf("\nSample mean=%f and sample variance=%f",sm,sv); 
+getch();
+}
