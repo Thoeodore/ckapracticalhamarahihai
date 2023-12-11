@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h> 
+#include<values.h> 
+#include<math.h> 
+#include<stdlib.h> 
+void main()
+{
+int i,j,n,k;
+float x[20],y,lambda,pm,pv,sm,sv,sum,vsum,u; 
+clrscr();
+randomize();
+printf("Enter sample size n,shape parameter k and rate parameter lambda of gamma "); 
+scanf("%d%d%f",&n,&k,&lambda);
+printf("\nRandom sample\n"); 
+for(i=0;i<n;i++)
+{ 
+y=1;
+for(j=0;j<k;j++)
+{
+u=rand()/(float) MAXINT; 
+y=y*(1-u);
+}
+x[i]=-log(y)/lambda; 
+printf("\t%f",x[i]);
+}
+pm=k/lambda; 
+pv=k/(lambda*lambda);
+printf("\nPopulation mean=%f and population variance=%f",pm,pv); 
+sum=0.0,vsum=0.0;
+for(i=0;i<n;i++) 
+sum=sum+x[i]; 
+sm=sum/n; 
+for(i=0;i<n;i++)
+vsum=vsum+((x[i]-sm)*(x[i]-sm)); 
+sv=vsum/n;
+printf("\nSample mean=%f and sample variance=%f",sm,sv); 
+getch();
+}
