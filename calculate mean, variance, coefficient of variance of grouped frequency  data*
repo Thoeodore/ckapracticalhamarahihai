@@ -1,0 +1,54 @@
+#include<stdio.h> 
+#include<conio.h> 
+#include<math.h>
+void variance(float mid[],float freq[],int n); 
+float mean(float mid[],float freq[],int n); 
+void main()
+{
+int i,n;
+float lower_limit[15],upper_limit[15],mid[15],freq[15]; 
+clrscr();
+printf("Enter number of intervals "); 
+scanf("%d",&n);
+printf("\nEnter lower limits "); 
+for(i=0;i<n;i++) 
+scanf("%f",&lower_limit[i]); 
+printf("\nEnter upper limits "); 
+for(i=0;i<n;i++) 
+scanf("%f",&upper_limit[i]); 
+printf("\nEnter frequencies "); 
+for(i=0;i<n;i++)
+{
+scanf("%f",&freq[i]); 
+mid[i]=(lower_limit[i]+upper_limit[i])/2.0;
+}
+variance(mid,freq,n); 
+getch();
+}
+float mean(float mid[],float freq[],int n)
+{
+floatsum=0.0,freqsum=0.0; 
+int i;
+for(i=0;i<n;i++)
+{
+sum=sum+mid[i]*freq[i]; 
+freqsum=freqsum+freq[i];
+}
+return(sum/freqsum);
+}
+void variance(float mid[], float freq[],int n)
+{
+float xm,sum=0.0,var,freqsum=0.0,cov; 
+int i;
+xm=mean(mid,freq,n); 
+printf("\nmean=%f",xm); 
+for(i=0;i<n;i++)
+{
+sum=sum+(freq[i]*(mid[i]-xm)*(mid[i]-xm)); 
+freqsum=freqsum+freq[i];
+}
+var=sum/freqsum; 
+printf("\nVariance=%f",var); 
+cov=(sqrt(var)/xm)*100;
+printf("\n Coefficient of variation = %f",cov);
+}
