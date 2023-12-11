@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<conio.h> 
+#include<math.h> 
+int fact(int x);
+void main()
+{
+int r,c,i,j,freq[10][10];
+float expfreq[10][10],chical,chitab,rfreq[10][10]; 
+clrscr();
+printf("Enter number of rows and colums of contingency table "); 
+scanf("%d%d",&r,&c);
+printf("\nEnter %d frequency row wise ",r*c); 
+for(i=0;i<r;i++)
+for(j=0;j<c;j++) 
+scanf("%d",&freq[i][j]); 
+for(i=0;i<r;i++)
+{
+freq[i][c]=0; 
+for(j=0;j<c;j++)
+freq[i][c]=freq[i][c]+freq[i][j];
+}
+for(j=0;j<c;j++)
+{
+freq[r][j]=0; 
+for(i=0;i<r;i++)
+freq[r][j]=freq[r][j]+freq[i][j];
+}
+freq[r][c]=0; 
+for(i=0;i<r;i++)
+freq[r][c]=freq[r][c]+freq[i][c]; 
+for(i=0;i<r;i++) 
+for(j=0;j<c;j++)
+{
+expfreq[i][j]=(freq[i][c]*freq[r][j])/freq[r][c]; 
+printf("%f \t",expfreq[i][j]);
+}
+printf("\nEnter tabulated chi square value "); 
+scanf("%f",&chitab);
+chical=0.0; 
+for(i=0;i<r;i++) 
+for(j=0;j<c;j++)
+{
+rfreq[i][j]=(freq[i][j]-expfreq[i][j])*(freq[i][j]-expfreq[i][j])/expfreq[i][j]; 
+chical=chical+rfreq[i][j];
+}
+printf("\n Calculated value of chi square= %f",chical); 
+if(chical<chitab)
+printf("\nAccept Ho"); 
+else
+printf("\nReject Ho"); 
+getch();
+}
