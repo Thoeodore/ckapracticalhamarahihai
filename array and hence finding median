@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<conio.h> 
+void main()
+{
+int i,j,n;
+float median,a[10],t; 
+clrscr();
+printf("Enter the number of items"); 
+scanf("%d",&n);
+printf("Input %d values",n); 
+for(i=0;i<n;i++)
+{
+scanf("%f",&a[i]);
+}
+/* Sorting Begin*/ 
+for(i=0;i<n-1;i++)
+{
+for(j=0;j<n-i-1;j++)
+{
+if(a[j]>a[j+1])
+{
+t=a[j];
+a[j] = a[j+1]; 
+a[j+1]= t;
+}
+else 
+continue;
+}}
+/*Sorting ends*/ 
+for(i=0;i<n;i++)
+{
+printf("%f\t",a[i]);
+}
+/*Calculation for median*/ 
+if(n%2==0)
+{
+median =(a[(n/2)-1]+a[n/2])/2.0;
+}
+else
+{
+median = a[n/2];
+}
+printf("\n Median is %f",median); 
+getch();
+}
