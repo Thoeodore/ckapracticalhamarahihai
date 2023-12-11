@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<conio.h> 
+void main()
+{
+int i,j,k,n;
+float X[10][10],Y[10][10],traceX=0,traceY=0,T[10][10],A[10][10],S[10][10],M[10][10];
+clrscr();
+printf("Enter order n of matrix "); 
+scanf("%d",&n);
+printf(" Enter square matrix X\n"); 
+for(i=0;i<n;i++)
+for(j=0;j<n;j++) 
+scanf("%f",&X[i][j]); 
+printf("Enter square matrix Y\n"); 
+for(i=0;i<n;i++)
+for(j=0;j<n;j++) 
+scanf("%f",&Y[i][j]); 
+for(i=0;i<n;i++)
+{
+traceX=traceX+X[i][i]; 
+traceY=traceY+Y[i][i];
+}
+printf("\n Trace of X=%f\n Trace of Y=%f",traceX,traceY); 
+for(i=0;i<n;i++)
+for(j=0;j<n;j++) 
+T[i][j]=X[j][i];
+printf("\n Transpose of X\n"); 
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++) 
+printf("%f\t",T[i][j]); 
+printf("\n");
+}
+for(i=0;i<n;i++) 
+for(j=0;j<n;j++)
+{
+A[i][j] = X[i][j]+Y[i][j];
+S[i][j] = X[i][j]-Y[i][j];
+}
+printf("\nAddition of X and Y\n"); 
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++) 
+printf("%f\t",A[i][j]); 
+printf("\n");
+}
+printf("\nSubtraction of X and Y\n"); 
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++) 
+printf("%f\t",S[i][j]); 
+printf("\n");
+}
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{ 
+M[i][j]=0;
+for(k=0;k<n;k++) 
+M[i][j]=M[i][j]+X[i][k]+Y[k][j];
+}}
+printf("\nMultiplication of X and Y\n"); 
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++) 
+printf("%f\t",M[i][j]); 
+printf("\n");
+}
+getch();
+}
