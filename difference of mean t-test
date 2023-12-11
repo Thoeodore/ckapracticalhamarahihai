@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<conio.h> 
+#include<math.h>
+float mean(float x[], int n);
+float variance(float x[],int n,float xm); 
+void main()
+{
+int i,n1,n2;
+float x[20],y[20],ym,xm,tval,tcal,s2,svx,tvs; 
+clrscr();
+printf("Enter values of n1 and n2 "); 
+scanf("%d %d",&n1,&n2); 
+printf("Enter values of x "); 
+for(i=0;i<n1;i++)
+scanf("%f",&x[i]);
+printf("Enter values of y "); 
+for(i=0;i<n2;i++) 
+scanf("%f",&y[i]);
+printf("Enter tabulated value of t "); 
+scanf("%f",&tval);
+xm=mean(x,n1); 
+svx=variance(x,n1,xm); 
+ym=mean(y,n2); 
+tvs=svx+variance(y,n2,ym); 
+s2=tvs/(n1+n2-2); 
+s2=s2*(1.0/n1+1.0/n2);
+tcal=(xm-ym)/sqrt(s2); 
+printf("\nCalculated value of t=%f ",tcal); 
+if(abs(tcal)<tval)
+printf("\nAccept Ho"); 
+else
+printf("\nReject Ho"); 
+getch();
+}
+float mean(float x[],int n)
+{
+int i;
+float sum=0.0;
+for(i=0;i<n;i++) 
+sum=sum+x[i]; 
+return(sum/n);
+}
+float variance(float x[],int n, float xm)
+{
+int i;
+float sum=0.0; 
+for(i=0;i<n;i++)
+sum=sum+(x[i]-xm)*(x[i]-xm); 
+return(sum);
+}
