@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h> 
+int factorial(int x); 
+void main()
+{
+int x,fact; 
+clrscr();
+printf("Enter any integer value "); 
+scanf("%d",&x);
+fact=factorial(x);
+printf("\n Factorial of %d = %d",x,fact); 
+getch();
+}
+int factorial(int x)
+{
+int b; 
+if(x==1) 
+return(1); 
+else
+b=x*factorial(x-1); 
+return(b);
+}
