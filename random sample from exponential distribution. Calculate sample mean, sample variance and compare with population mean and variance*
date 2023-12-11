@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h> 
+#include<values.h> 
+#include<math.h> 
+#include<stdlib.h> 
+void main()
+{
+int i,n;
+float x[20],y,theta,pm,pv,sm,sv,sum,vsum; 
+clrscr();
+randomize();
+printf("Enter sample size and parameter theta "); 
+scanf("%d%f",&n,&theta);
+printf("\nRandom sample\n"); 
+for(i=0;i<n;i++)
+{
+y=rand()/(float) MAXINT; 
+x[i]=-log(1-y)/theta;
+printf("\t%f",x[i]);
+}
+pm=1/theta; 
+pv=1/(theta*theta);
+printf("\nPopulation mean=%f and population variance=%f",pm,pv); 
+sum=0.0,vsum=0.0;
+for(i=0;i<n;i++) 
+sum=sum+x[i]; 
+sm=sum/n; 
+for(i=0;i<n;i++)
+vsum=vsum+((x[i]-sm)*(x[i]-sm)); 
+sv=vsum/n;
+printf("\nSample mean=%f and sample variance=%f",sm,sv); 
+getch();
+}
